@@ -1,0 +1,12 @@
+lib-->里面放的都是引入包，插件类
+
+html-->common--> 放的都是公共部分的东西
+html-->common-->aside:放的是公共的侧边栏
+html-->common-->header:放的是公共的头部
+html-->common-->style:放的是引入的样式
+
+提取公共部分出去后在index中用
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/XX.html')?>替换，即会引用你提取出去的部分显示  后面路径就用/html/common/XX.html，XX为你替换的文件名
+
+js-->common:也放以上公共html的js部分
+js-->common-->util:放公共js部分

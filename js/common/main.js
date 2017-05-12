@@ -5,9 +5,9 @@
  * 因为是所有页面公用的入口模块，
  * 所以这里面会对所有的模块都进行paths配置。
  * */
-require.congig({
+require.config({
     baseUrl:'/',
-
+//配置模块路径昵称
     paths:{
         // 每个页面对应的模块
         csAdd: 'js/course/add',
@@ -35,9 +35,12 @@ require.congig({
         util:'js/common/util',
 
         // 第三方模块
+        //依赖jquery的
         jquery: 'lib/jquery/jquery.min',
-        bootstrap: 'lib/bootstrap/js/bootstrap.min'
+        bootstrap: 'lib/bootstrap/js/bootstrap.min',
+        jquery_form:'lib/jquery-form/jquery.form'
     },
+
     //配置普通模块的依赖或者输出
     shim:{
         //bootstrap是普通模块，但是依赖与jquery,所以以这里配置
@@ -79,5 +82,8 @@ var obj = {
 
 //根据页面的pathname获取要加载的模块名
 var moduleName=obj[location.pathname];
-//加载这个模块
+//加载这个模块,这个模块称为页面的主模块
 require([moduleName]);
+
+
+

@@ -25,6 +25,7 @@ require.config({
 
         tcEdit: 'js/teacher/edit',
         tcList: 'js/teacher/list',
+        tcAdd:'js/teacher/add',
 
         usProfile: 'js/user/profile',
         usList: 'js/user/list',
@@ -35,13 +36,16 @@ require.config({
         util:'js/common/util',
 
         // 第三方模块
-        //依赖jquery的
         jquery: 'lib/jquery/jquery.min',
+
+        //jquery插件
         bootstrap: 'lib/bootstrap/js/bootstrap.min',
         jquery_form:'lib/jquery-form/jquery.form',
         jquery_cookie:'lib/jquery-cookie/jquery.cookie',
+
         //不依赖jquery的
-        nprogress:'lib/nprogress/nprogress'
+        nprogress:'lib/nprogress/nprogress',
+        template:'lib/artTemplate/template'
     },
 
     //配置普通模块的依赖或者输出
@@ -51,6 +55,11 @@ require.config({
             deps:['jquery']
         }
     }
+});
+
+//加载进度条库，然后start
+require(['nprogress'],function(nprogress){
+    nprogress.start();
 });
 
 /*
@@ -63,14 +72,15 @@ require.config({
 
 var obj = {
     '/': 'index',
+    '/index.html':'index',
 
     '/html/course/add.html': 'csAdd',
     '/html/course/list.html': 'usList',
     '/html/course/category_add.html': 'cgAdd',
     '/html/course/list.html': 'cgList',
     '/html/course/course_add_step1.html': 'csAdd1',
-    '/html/course//course_add_step2.html': 'csAdd2',
-    '/html/course//course_add_step3.html': 'csAdd3',
+    '/html/course/course_add_step2.html': 'csAdd2',
+    '/html/course/course_add_step3.html': 'csAdd3',
 
     '/html/home/login.html': 'login',
     '/html/home/repass.html': 'repass',
@@ -78,6 +88,7 @@ var obj = {
 
     '/html/teacher/edit.html': 'tcEdit',
     '/html/teacher/list.html': 'tcList',
+    '/html/teacher/add.html':'tcAdd',
 
     '/html/user/profile.html': 'usProfile',
     '/html/user/list.html': 'usList',

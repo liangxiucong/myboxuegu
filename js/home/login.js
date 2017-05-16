@@ -24,7 +24,10 @@ define(['bootstrap', 'jquery', 'jquery_form','jquery_cookie','nprogress','util']
         })
 
         //配置ajax请求的loading
-        util.loading();
+        //util.loading();
+        var returns = util({
+            'loading': []
+        });
 
     //ud===undefined
         //监听form表单的提交事件，转为ajax请求，请求成功，那么跳转页面
@@ -48,3 +51,4 @@ define(['bootstrap', 'jquery', 'jquery_form','jquery_cookie','nprogress','util']
             location.href='/';
         }
     });
+

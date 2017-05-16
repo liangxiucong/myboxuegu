@@ -1,40 +1,55 @@
 define(['jquery','jquery_cookie'], function($,ud) {
-	/*
-	* È¡³öcookie´æ´¢µÄÓÃ»§ĞÅÏ¢
-	* ´æ´¢µÄÓÃ»§ĞÅÏ¢ÊÇÒ»¸öjson×Ö·û´®£¬ĞèÒªÊÖ¶¯½âÎöÎªjs¶ÔÏó
-	* È»ºó°ÑÊı¾İäÖÈ¾µ½µ¼º½×ó²àÉÏ²¿
-	* */
-    var userInfo={};
-    try{
-        userInfo=JSON.parse($.cookie('userInfo'));
-    }catch(e){
-        console.log('userInfo½âÎö´íÎó');
-    }
 
-    //ÔÚ±£Ö¤´æÔÚÍ·ÏñµÄÇëÇóÏÂÔÙÉèÖÃ
-    userInfo.tc_avatar && $('.aside .avatar img').attr('src',userInfo.tc_avatar);
-    $('.aside h4').text(userInfo.tc_name);
-console.log(2);
-    //×ó²àµ¼º½ÏÂÀ­ÁĞ±í
+    /*
+    * å¯¼èˆªä¸Šéƒ¨ç”¨æˆ·ä¿¡æ¯å±•ç¤ºï¼š
+    * 1.ä½¿ç”¨æ’ä»¶è·å–æœ¬åœ°cookieå­˜å‚¨çš„ç”¨æˆ·ä¿¡æ¯
+    * 2.ä½†æ˜¯è¿™ä¸ªç”¨æˆ·ä¿¡æ¯æ•°æ®æ˜¯jsonå­—ç¬¦ä¸²ï¼Œæ‰€ä»¥éœ€è¦å…ˆä½¿ç”¨JSON.parseè§£ææˆå¯¹è±¡å†ä½¿ç”¨
+    * 3.å¦‚æœç”¨æˆ·ä¿¡æ¯ä¸­å­˜åœ¨å¤´åƒï¼Œé‚£ä¹ˆè¿›è¡Œimgçš„srcæ›¿æ¢ï¼Œå¦åˆ™ä¸ç”¨ç®¡ï¼Œå› ä¸ºåœ¨å¸ƒå±€æ—¶å°±æœ‰é»˜è®¤å¤´åƒ
+    * 4.å½“ç”¨æˆ·ä¿¡æ¯ä¸­å­˜åœ¨ç”¨æˆ·åï¼Œåˆ™æ›¿æ¢ï¼Œå¦åˆ™ä½¿ç”¨å¸ƒå±€æ—¶çš„é»˜è®¤å€¼
+    * */
+
+    var userInfo=JSON.parse($.cookie('userInfo')||'{}');
+
+    userInfo.tc_avatar&& $('.aside .avatar img').attr('src',userInfo.tc_avatar);
+    userInfo.tc_name && $('.aside h4').text(userInfo.tc_name);
+
+
+   /*
+   *  //å·¦ä¾§å¯¼èˆªä¸‹æ‹‰åˆ—è¡¨
+   *  1.è·å–æ‹¥æœ‰ä¸‹æ‹‰åˆ—è¡¨çš„aæ ‡ç­¾ç»‘å®šç‚¹å‡»äº‹ä»¶
+   *  2.äº‹ä»¶è§¦å‘æ—¶è·å–å¯¹åº”çš„ulæ ‡ç­¾ï¼Œè®©å®ƒæ˜¾ç¤ºå˜éšè—ï¼Œéšè—å˜æ˜¾ç¤º
+   * */
+
     $('.slide-down').on('click',function(){
-        console.log(1);
+        //console.log(1);
         $(this).next().slideToggle();
     });
 
     /*
-    * ×ó²àµ¼º½½¹µã¶¨Î»
-    * 1.ÏÈ»ñÈ¡Ò³ÃæµÄpathname
-    * 2.¶¨ÒåÒ»¸ö¶ÔÏó£¬Õâ¸ö¶ÔÏó´æ´¢pathnameÓë×ó²àµ¼º½¶ÔÓ¦µÄhrefÊôĞÔÖµ
-    * 3.È»ºóÍâÃæÊ¹ÓÃÒ³ÃæµÄpathnameÈ¥¶ÔÏóÖĞÆ¥Åä
-    * Æ¥Åäµ½ÁË¾ÍÊ¹ÓÃÕâ¸öÆ¥Åäµ½µÄÖµ»ñÈ¡¶ÔÓ¦µÄaÌí¼Óactive_ClassÉèÖÃ½¹µã
-    * Èç¹ûÃ»ÓĞÆ¥Åäµ½£¬¾ÍÖ±½ÓÊ¹ÓÃ¸Ãpathname»ñÈ¡¶ÔÓ¦aÌí¼Óactive_ClassÉèÖÃ½¹µã
+    * å·¦ä¾§å¯¼èˆªç„¦ç‚¹å®šä½
+    * 1.å…ˆè·å–é¡µé¢çš„pathname
+    * 2.å®šä¹‰ä¸€ä¸ªå¯¹è±¡ï¼Œè¿™ä¸ªå¯¹è±¡å­˜å‚¨pathnameä¸å·¦ä¾§å¯¼èˆªå¯¹åº”çš„hrefå±æ€§å€¼
+    * 3.ç„¶åå¤–é¢ä½¿ç”¨é¡µé¢çš„pathnameå»å¯¹è±¡ä¸­åŒ¹é…
+    * åŒ¹é…åˆ°äº†å°±ä½¿ç”¨è¿™ä¸ªåŒ¹é…åˆ°çš„å€¼è·å–å¯¹åº”çš„aæ·»åŠ active_Classè®¾ç½®ç„¦ç‚¹
+    * å¦‚æœæ²¡æœ‰åŒ¹é…åˆ°ï¼Œå°±ç›´æ¥ä½¿ç”¨è¯¥pathnameè·å–å¯¹åº”aæ·»åŠ active_Classè®¾ç½®ç„¦ç‚¹
     * */
-    var pathname=location.pathname;
-    //Õâ¸öÅäÖÃÖµÆ¥ÅäÄÇĞ©ÎŞ¹æÂÉµÄ
+
+
+
+    // å¯¹è±¡å·¦è¾¹çš„keyå¯¹åº”ç½‘ç«™çš„pathnameï¼Œå³è¾¹çš„å€¼å¯¹åº”å¯¼èˆªä¸­aæ ‡ç­¾çš„hrefå±æ€§å€¼
+    //è¿™ä¸ªé…ç½®å€¼åŒ¹é…é‚£äº›æ— è§„å¾‹çš„
     var pathToHref={
-        '/html/user/profile.html':'/html/user/list.html',
-        '/html/teacher/edit.html':'/html/teach/list.html'
+        '/':'/index.html',
+        //'/html/user/profile.html':'/html/user/list.html',
+        //'/html/teacher/edit.html':'/html/teach/list.html'
+        '/html/home/settings.html': '/index.html',
+        '/html/home/repass.html': '/index.html',
+        '/html/user/profile.html': '/html/user/list.html',
+        '/html/teacher/add.html': '/html/teacher/list.html',
+        '/html/teacher/edit.html': '/html/teacher/list.html'
     };
+
+    var pathname=location.pathname;
     var href=pathToHref[pathname]?pathToHref[pathname]:pathname;
     $('.aside a').removeClass('active').filter('[href="'+href+'"]').addClass('active');
 });

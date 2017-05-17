@@ -1,103 +1,114 @@
 /**
- * Created by cloverliang on 2017/5/11.
- */
-/**
- * ÒòÎªÊÇËùÓĞÒ³Ãæ¹«ÓÃµÄÈë¿ÚÄ£¿é£¬
- * ËùÒÔÕâÀïÃæ»á¶ÔËùÓĞµÄÄ£¿é¶¼½øĞĞpathsÅäÖÃ¡£
+ * å› ä¸ºæ˜¯æ‰€æœ‰é¡µé¢å…¬ç”¨çš„å…¥å£æ¨¡å—ï¼Œ
+ * æ‰€ä»¥è¿™é‡Œé¢ä¼šå¯¹æ‰€æœ‰çš„æ¨¡å—éƒ½è¿›è¡Œpathsé…ç½®ã€‚
  * */
 require.config({
-    baseUrl:'/',
-//ÅäÖÃÄ£¿éÂ·¾¶êÇ³Æ
-    paths:{
-        // Ã¿¸öÒ³Ãæ¶ÔÓ¦µÄÄ£¿é
-        csAdd: 'js/course/add',
-        cgAdd: 'js/course/category_add',
-        cgList: 'js/course/category_list',
-        csAdd1: 'js/course/course_add_step1',
-        csAdd2: 'js/course/course_add_step2',
-        csAdd3: 'js/course/course_add_step3',
-        csList: 'js/course/list',
 
+    baseUrl: '/',
+
+    // é…ç½®æ¨¡å—è·¯å¾„æ˜µç§°
+    paths: {
+
+        // æ¯ä¸ªé¡µé¢å¯¹åº”çš„æ¨¡å—
         index: 'js/home/index',
         login: 'js/home/login',
         repass: 'js/home/repass',
         settings: 'js/home/settings',
 
+        tcAdd: 'js/teacher/add',
         tcEdit: 'js/teacher/edit',
         tcList: 'js/teacher/list',
-        tcAdd:'js/teacher/add',
 
         usProfile: 'js/user/profile',
         usList: 'js/user/list',
 
-        // ¹«¹²µÄÄ£¿é
-        aside:'js/common/aside',
-        header:'js/common/header',
-        util:'js/common/util',
+        csAdd: 'js/course/add',
+        csList: 'js/course/list',
 
-        // µÚÈı·½Ä£¿é
+        cgAdd: 'js/course/category_add',
+        cgList: 'js/course/category_list',
+        csAdd1: 'js/course/course_add_step1',
+        csAdd2: 'js/course/course_add_step2',
+        csAdd3: 'js/course/course_add_step3',
+
+        // å…¬å…±çš„æ¨¡å—
+        aside: 'js/common/aside',
+        header: 'js/common/header',
+        util: 'js/common/util',
+
+        // ç¬¬ä¸‰æ–¹æ¨¡å—
         jquery: 'lib/jquery/jquery.min',
 
-        //jquery²å¼ş
+        // jqueryæ’ä»¶
         bootstrap: 'lib/bootstrap/js/bootstrap.min',
-        jquery_form:'lib/jquery-form/jquery.form',
-        jquery_cookie:'lib/jquery-cookie/jquery.cookie',
+        jquery_form: 'lib/jquery-form/jquery.form',
+        jquery_cookie: 'lib/jquery-cookie/jquery.cookie',
+        jquery_region: 'lib/jquery-region/jquery.region',
+        jquery_datepicker: 'lib/jquery-bootstrap-datepicker/js/bootstrap-datepicker.min',
+        jquery_datepicker_CN: 'lib/jquery-bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+        jquery_uploadify: 'lib/uploadify/jquery.uploadify.min',
 
-        //²»ÒÀÀµjqueryµÄ
-        nprogress:'lib/nprogress/nprogress',
-        template:'lib/artTemplate/template'
+        // ä¸ä¾èµ–jqueryçš„
+        nprogress: 'lib/nprogress/nprogress',
+        template: 'lib/artTemplate/template'
     },
 
-    //ÅäÖÃÆÕÍ¨Ä£¿éµÄÒÀÀµ»òÕßÊä³ö
-    shim:{
-        //bootstrapÊÇÆÕÍ¨Ä£¿é£¬µ«ÊÇÒÀÀµÓëjquery,ËùÒÔÒÔÕâÀïÅäÖÃ
-        bootstrap:{
-            deps:['jquery']
+    // é…ç½®æ™®é€šæ¨¡å—çš„ä¾èµ–æˆ–è€…è¾“å‡º
+    shim: {
+
+        // bootstrapæ˜¯æ™®é€šæ¨¡å—ï¼Œä½†æ˜¯ä¾èµ–ä¸jqueryï¼Œæ‰€ä»¥è¿™é‡Œé…ç½®
+        bootstrap: {
+            deps: ['jquery']
+        },
+
+        // è¿™æ˜¯æ—¥æœŸæ’ä»¶çš„è¯­è¨€åŒ…ï¼Œä¾èµ–jqueryå’Œæ—¥æœŸæ’ä»¶ä¸¤ä¸ªæ–‡ä»¶
+        jquery_datepicker_CN: {
+            deps: ['jquery', 'jquery_datepicker']
+        },
+
+        jquery_uploadify: {
+            deps: ['jquery']
         }
     }
 });
 
-//¼ÓÔØ½ø¶ÈÌõ¿â£¬È»ºóstart
-require(['nprogress'],function(nprogress){
+// åŠ è½½è¿›åº¦æ¡åº“ï¼Œç„¶åstart
+require(['nprogress'], function(nprogress) {
     nprogress.start();
 });
 
-/*
-* Èç¹ûÓÃ»§´ò¿ªµÄÊÇÊ×Ò³£¬ÄÇÃ´Ó¦¸Ã¼ÓÔØindexÄ£¿é
-* Èç¹û´ò¿ªµÄÊÇµÇÂ¼Ò³£¬ÄÇÃ´Ó¦¸Ã¼ÓÔØloginÄ£¿é
-* µÈµÈ£¬ÄÇÃ´ÎÒÃÇ¾ÍĞèÒª¸ù¾İÒ»¶¨¹æÔò°Ñ¼ÓÔØÄ£¿éĞ´»î
-* */
-//require(['index]) //²»ÄÜÕâÑùĞ´ËÀ
-
+/**
+ * å¦‚æœç”¨æˆ·æ‰“å¼€çš„æ˜¯é¦–é¡µï¼Œé‚£ä¹ˆåº”è¯¥åŠ è½½indexæ¨¡å—ï¼Œ
+ * å¦‚æœæ‰“å¼€çš„æ˜¯ç™»é™†é¡µï¼Œé‚£ä¹ˆåº”è¯¥åŠ è½½loginæ¨¡å—ï¼Œ
+ * ç­‰ç­‰ç­‰ï¼Œé‚£ä¹ˆæˆ‘ä»¬å°±éœ€è¦æ ¹æ®ä¸€å®šè§„åˆ™æŠŠåŠ è½½æ¨¡å—çš„å†™æ´»ã€‚
+ * */
+// require(['index']) // ä¸èƒ½è¿™æ ·å†™æ­»ã€‚
 
 var obj = {
     '/': 'index',
-    '/index.html':'index',
-
-    '/html/course/add.html': 'csAdd',
-    '/html/course/list.html': 'usList',
-    '/html/course/category_add.html': 'cgAdd',
-    '/html/course/list.html': 'cgList',
-    '/html/course/course_add_step1.html': 'csAdd1',
-    '/html/course/course_add_step2.html': 'csAdd2',
-    '/html/course/course_add_step3.html': 'csAdd3',
+    '/index.html': 'index',
 
     '/html/home/login.html': 'login',
     '/html/home/repass.html': 'repass',
     '/html/home/settings.html': 'settings',
 
+    '/html/teacher/add.html': 'tcAdd',
     '/html/teacher/edit.html': 'tcEdit',
     '/html/teacher/list.html': 'tcList',
-    '/html/teacher/add.html':'tcAdd',
 
     '/html/user/profile.html': 'usProfile',
     '/html/user/list.html': 'usList',
+
+    '/html/course/add.html': 'csAdd',
+    '/html/course/list.html': 'csList',
+    '/html/course/category_add.html': 'cgAdd',
+    '/html/course/category_list.html': 'cgList',
+    '/html/course/course_add_step1.html': 'csAdd1',
+    '/html/course/course_add_step2.html': 'csAdd2',
+    '/html/course/course_add_step3.html': 'csAdd3'
 };
 
-//¸ù¾İÒ³ÃæµÄpathname»ñÈ¡Òª¼ÓÔØµÄÄ£¿éÃû
-var moduleName=obj[location.pathname];
-//¼ÓÔØÕâ¸öÄ£¿é,Õâ¸öÄ£¿é³ÆÎªÒ³ÃæµÄÖ÷Ä£¿é
+// æ ¹æ®é¡µé¢çš„pathnameè·å–è¦åŠ è½½çš„æ¨¡å—å
+var moduleName = obj[location.pathname];
+// åŠ è½½è¿™ä¸ªæ¨¡å—
 require([moduleName]);
-
-
-

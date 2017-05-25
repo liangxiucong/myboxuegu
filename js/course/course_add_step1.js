@@ -2,7 +2,7 @@
 * @Author: cloverliang
 * @Date:   2017-05-12 00:23:28
 * @Last Modified by:   cloverliang
-* @Last Modified time: 2017-05-17 16:09:29
+* @Last Modified time: 2017-05-18 16:28:28
 */
 /**
  * Created by cloverliang on 2017/5/15.
@@ -60,8 +60,8 @@ define(['header','aside','util','nprogress','jquery_form','jquery','template'],f
 课程基本信息数据提交
  */
 function steps1Submit(){
-    $('form.basic').ajaxForm(function(data){
-        loation.href='/html/course/course_add_step2.html?cs_id=' + cs_id;
+    $('form.basic').ajaxForm(function(e){
+        location.href='/html/course/course_add_step2.html?cs_id=' + cs_id;
     });
 }
 

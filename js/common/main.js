@@ -47,6 +47,7 @@ require.config({
         jquery_datepicker: 'lib/jquery-bootstrap-datepicker/js/bootstrap-datepicker.min',
         jquery_datepicker_CN: 'lib/jquery-bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
         jquery_uploadify: 'lib/uploadify/jquery.uploadify.min',
+        jquery_Jcrop: 'lib/jquery-Jcrop/js/Jcrop.min',
 
         // 不依赖jquery的
         nprogress: 'lib/nprogress/nprogress',
@@ -67,6 +68,10 @@ require.config({
         },
 
         jquery_uploadify: {
+            deps: ['jquery']
+        },
+        
+        jquery_Jcrop: {
             deps: ['jquery']
         }
     }

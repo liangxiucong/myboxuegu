@@ -22,10 +22,10 @@
                     <li class="active">课程分类</li>
                 </ol>
                 <div class="page-title">
-                    <a href="./course_category_add.html" class="btn btn-success btn-sm pull-right">添加分类</a>
+                    <a href="/html/course/category_add.html" class="btn btn-success btn-sm pull-right">添加分类</a>
                 </div>
                 <div class="panel panel-default">
-                    <table class="table table-bordered">
+                   <!--  <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th width="18%">分类名称</th>
@@ -181,11 +181,38 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
                 </div>
             </div>
         </div>
     </div>
+
+<script id='category_list_tpl' type='text/tpl'>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th width="18%">分类名称</th>
+                <th>课程数量</th>
+                <th>是否显示</th>
+                <th>排序</th>
+                <th width="10%">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{each result as value i }}
+            <tr class="active">
+                <td class="text-left">{{value.cg_name}}</td>
+                <td>{{value.cg_order}}</td>
+                <td>{{cg_is_hide == 0 ? '是':'否'}}</td>
+                <td>{{value.pid}}</td>
+                <td>
+                    <a href="/html/course/category_add.html?cg_id={{value.cg_id}}" class="btn btn-info btn-xs">编辑</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</script>
 
 <!-- AJAX的loading -->
     <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/loading.html')?>

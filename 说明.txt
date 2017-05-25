@@ -10,3 +10,20 @@ html-->common-->style:放的是引入的样式
 
 js-->common:也放以上公共html的js部分
 js-->common-->util:放公共js部分
+
+
+
+进度条的步骤
+1.引入样式，因为nprogress.css自带的样式
+2.在main.js(公共入口模块)里引入进度条的插件(nprogress.js)
+3.在login.js里面写js
+
+
+加载齿轮的步骤
+1.写loading.html到common
+2.在login.html里用PHP引入这个html结构
+3.在util里写js，判断加载，显示跟隐藏
+
+下拉列表步骤
+1.在aside.js里写js代码，去获取下拉列表
+2.
